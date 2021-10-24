@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 let bird = null
 let totalDelta = 0
-const VELOCITY = 400
+const VELOCITY = 300
 const WIDTH = 800
 const HEIGHT = 600
 
@@ -12,9 +12,9 @@ const tuna = {
   physics: {
     default: 'arcade',
     arcade: {
-      debug: true,
+      // debug: true,
       gravity: {
-        y: 50
+        y: 200
       }
     },
   },
@@ -29,7 +29,7 @@ const tuna = {
 function preload() {
   this.load.image('dingdong', 'assets/sky.png')
   this.load.image('bird', 'assets/bird.png')
-} 
+}
 
 function create() {
   this.add.image(0,0, 'dingdong').setOrigin(0)
@@ -48,26 +48,15 @@ function update(time, delta) {
   }
 
   if (bird.body.position.y >= HEIGHT) {
-    bird.body.velocity.y = -190
+    bird.body.velocity.y = -400
   }
 
   if (totalDelta >= 1000) {
     console.log({gravity: bird.body.gravity.y, velocity: bird.body.velocity.y})
-    
+
     totalDelta = 0
   }
-  
+
 }
 
 new Phaser.Game(tuna);
-
-
-
-
-
-
-
-
-
-
-
